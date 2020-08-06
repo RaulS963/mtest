@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.name-header{
+			height:200px;
+			background-color: black;
+			display: flex; 
+  			align-items: center; 
+  			justify-content: center;
+		}
+		.photo-frame{
+			height: 150px;
+		}
+		.user-pic{
+			height: 110px;
+			width: 110px;
+			border: 6px solid rgb(4, 189, 4);
+			border-radius: 50%;
+		}
+		.user-name h2{
+			margin-top: 5px;
+			color: white;
+
+		}
+		.main{
+			margin-top: 15px;
+		}
+		.inner{
+			margin: auto;
+			height: 55px;
+			width: 85%;
+			margin-top: 15px;
+			border-radius: 3px;
+		}
+		.inner h2{
+			padding-top: 13px;
+			text-align: center;
+		}
+		.inner h2 a{
+			text-decoration: none;
+			color: white;
+			cursor: pointer;
+		}
+		.inner:hover{
+			box-shadow: 200px;
+		}
+		.loader{
+			position: fixed;
+			z-index: 99;
+			top:0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		@keyframes fadeOut{
+		 100%{
+			opacity: 0;
+			visibility: hidden;
+		 }
+		}
+		
+		.loader.hidden{
+			animation: fadeOut 0.5s;
+			animation-fill-mode: forwards;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="loader">
+		<img src="project-loader-colors.gif" style="width: 180px;" />
+	</div>
+
+	<div class="name-header">
+		<div class="photo-frame">
+			<div>
+				<img src="erza-scarlet-sits.jpg" class="user-pic" alt="user profile pic">
+			</div>
+			<div class="user-name">
+				<h2>Erza Scarlet</h2>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="main">
+		<div class="inner" style="background-color: rgb(228, 30, 30);">
+			<h2><a href="https://www.reddit.com/user/si1verSouL/" target="_blank">Reddit</a></h2>
+		</div>
+		<div class="inner" style="background-color: rgb(30, 30, 240);">
+			<h2><a href="#">Facebook</a></h2>
+		</div>
+		<div class="inner" style="background-color:rgb(119, 194, 241);">
+			<h2><a href="https://twitter.com/EruzaOP" target="_blank">Twitter</a></h2>
+		</div>
+		<div class="inner" style="background-color:rgb(204, 47, 178);">
+			<h2><a href="#">Instagram</a></h2>
+		</div>
+		<div class="inner" style="background-color:rgb(238, 223, 16);">
+			<h2><a href="#">Wattpad</a></h2>
+		</div>
+
+	</div>
+
+	<script>
+		window.addEventListener("load",function(){
+    		const loader = document.querySelector(".loader");
+    		loader.className += " hidden";  // space is important => class="loader hidden"
+		})
+	</script>
+
+</body>
+</html>
