@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="pics.css">
+	<title>Document</title>
+	<script>
+		var arr;
+		window.onload = async function () {
+			var data = await fetch("https://rauls963.github.io/Lewds/links.json");
+			arr = await data.json();
+			console.log(arr.length);
+			let trails = arr.length;
+			let half_len = Math.floor(trails / 2);
+			for (let i = 0; i < half_len; i++) {
+				index_1 = Math.floor((Math.random() * half_len));
+				index_2 = Math.floor(Math.floor(Math.random() * (trails - half_len - 1) + half_len));
+				let temp = arr[index_1];
+				arr[index_1] = arr[index_2];
+				arr[index_2] = temp;
+			}
+			display(-1,20);
+		}
+	</script>
+</head>
+<body>
+	<!-- page loading -->
+	<div class="loader">
+		<img src="project-loader-colors.gif" style="width: 130px;" />
+	</div>
+
+	<!-- main image content -->
+	<div id="main-grid-id" class="main-grid">
+		<div class="item">
+			<div class="content"></div>
+		</div>
+	</div>
+
+	<!-- bottom load-more-button and loading -->
+	<div class="load-more-content" id="load-more-content-id" style="display: none;margin-top:15px;">
+		<div style="margin: auto;width:fit-content;cursor:pointer;" onclick="loadMore()">
+			<h3><u>Load more</u></h3>
+		</div>
+	</div>
+
+	<script src="pics.js"></script>
+</body>
+</html>
