@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<style>
+		body {
+			background-color: white;
+		}
+		.input-box {
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-bottom: 14px;
+		}
+		.row-container {
+			/*background-color: rgb(157, 201, 228);*/
+			background-color: whitesmoke;
+			margin: 5px;
+		}
+		.row-icon-div {
+			height: 18px;
+		}
+		.close-icon {
+			float: right;
+			padding-top: 2px;
+			padding-right: 3px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.btn-container{			
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div>
+			<h1>Dashboard</h1>
+			<hr>
+		</div>
+		<form>
+			<div class="links-div" id="links-div">
+
+				<div class="row row-container">
+					<div class="row-icon-div">
+						<span class="glyphicon glyphicon-remove close-icon" title="remove" id="close-icon"></span>
+					</div>
+					<div class="col-sm-7 input-box">
+						<label for="url">Enter Profile URL:</label>
+						<input type="url" class="form-control" name="url" placeholder="Enter Profile URL" />
+					</div>
+					<div class="col-sm-5 input-box">
+						<label for="appName">Select App:</label>
+						<select name="appName" class="form-control" placeholder="Select">
+							<option value="">Select</option>
+							<option value="youtube">YouTube</option>
+							<option value="reddit">Reddit</option>
+							<option value="twitter">Twitter</option>
+							<option value="Instagram">Instagram</option>
+						</select>
+					</div>
+				</div>
+
+
+				
+			</div>
+
+			<div class="row btn-container">
+				<div class="col-xs-6" style="padding:2px">
+					<button type="button" id="btn_add" class="btn btn-info" style="width:100%;"><span class="glyphicon glyphicon-plus" style="font-size: 13px;"></span> <b>Add Link</b></button>
+				</div>
+				<div class="col-xs-6" style="padding:2px">
+					<button type="submit" class="btn btn-warning" style="width:100%;"><span class="glyphicon glyphicon-ok"></span> <b>Done</b></button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+
+	<script>
+    document.getElementById("btn_add").addEventListener("click",() => {
+      var rowItem = document.createElement("div");
+      var div1 = document.createElement("div");
+      var div2 = document.createElement("div");
+      var div3 = document.createElement("div");
+      var closeButton = document.createElement("span");
+      var labelField1 = document.createElement("label");
+      var labelField2 = document.createElement("label");
+      var inputField1 = document.createElement("input");
+      var selectField = document.createElement("select");
+      var optionsList = ['Select','Youtube','Reddit','Twitter','Instagram'];
+
+      rowItem.setAttribute("class","row row-container");
+      div1.setAttribute("class","row-icon-div");
+      closeButton.setAttribute("class","glyphicon glyphicon-remove close-icon");
+      closeButton.setAttribute("title","remove");
+      closeButton.setAttribute("id","close-icon");
+      //closeButton.setAttribute("onclick","deleteBlock()");
+
+      div2.setAttribute("class","col-sm-7 input-box");
+      labelField1.setAttribute("for","url");
+      labelField1.innerText = "Enter Profile URL:";
+      inputField1.setAttribute("type","url");
+      inputField1.setAttribute("class","form-control");
+      inputField1.setAttribute("name","url");
+      inputField1.setAttribute("placeholder","Enter Profile URL");
+
+      div3.setAttribute("class","col-sm-5 input-box");
+      labelField2.setAttribute("for","appName");
+      labelField2.innerText = "Select App:";
+      selectField.setAttribute("name","appName");
+      selectField.setAttribute("class","form-control");
+
+      document.getElementById("links-div").appendChild(rowItem);
+      rowItem.appendChild(div1);
+      div1.appendChild(closeButton);
+      rowItem.appendChild(div2);
+      div2.appendChild(labelField1);
+      div2.appendChild(inputField1);
+      rowItem.appendChild(div3);
+      div3.appendChild(labelField2);
+      div3.appendChild(selectField);
+
+      for(let i=0; i<optionsList.length; i++){
+        let option = document.createElement("option");
+        if(optionsList[i] === "Select"){
+          option.setAttribute("value","");
+        }else{
+          option.setAttribute("value",optionsList[i]);
+        }
+        option.innerText = optionsList[i];
+        selectField.appendChild(option);		
+      }
+      run();
+  });
+
+  function run(){
+    Array.from(document.getElementsByClassName("close-icon")).map((ele) => {
+      ele.addEventListener("click", () => {
+        var containerDiv = ele.parentElement.parentElement;
+        document.getElementById("links-div").removeChild(containerDiv);
+      });
+    });
+  }
+  </script>
+
+</body>
+</html>
