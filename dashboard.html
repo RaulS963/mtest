@@ -114,12 +114,14 @@
       inputField1.setAttribute("type","url");
       inputField1.setAttribute("class","form-control");
       inputField1.setAttribute("name","url");
+      inputField1.setAttribute("required",true);
       inputField1.setAttribute("placeholder","Enter Profile URL");
 
       div3.setAttribute("class","col-sm-5 input-box");
       labelField2.setAttribute("for","appName");
       labelField2.innerText = "Select App:";
       selectField.setAttribute("name","appName");
+      selectField.setAttribute("required",true);
       selectField.setAttribute("class","form-control");
 
       document.getElementById("links-div").appendChild(rowItem);
